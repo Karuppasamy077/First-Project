@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% load static %}
+
+                <title>Update</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'bootstrap3/bootstrap.min.css' %}">
+    <link rel="stylesheet"   href="{% static 'Css/style.css' %}">
+    <script src="{% static 'jquery/jquery.min.js' %}" ></script>
+
+</head>
+<body style="background-color:gray" id="update2">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a herf="#" class="navbar-brand" id="navbar">Update Details </a> 
+            </div>
+            <div class="nav navbar-brand navbar-right ">
+                <a href="{% url 'Update' %}" >Back</a>
+            </div>
+        </div>
+    </nav>
+
+<br><br><br>
+
+<div class="container-fluid">
+    <div class="col-md-offset-4 col-md-4">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{message.tags}}">
+                    {% if message.tags == 'error' %}
+                        {{message}}
+
+                    {% else %}
+                        {{message}}
+                    {% endif %}
+
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+
+
+<div class="containar-fluid" style="margin-top: 50px;">
+    <div class=" col-md-offset-4 col-md-4 well">
+        <h2 class="text-primary page-header text-center ">Update Here</h2>
+        <form method="POST" action="/update2/{{data.id}}" autocomplete="off" >
+            {% csrf_token %}
+                <div class="form-group">
+                    <label for="name" class="control-label">Name :</label>
+                    <input type="text" name="name" value="{{data.Empname}}" class="form-control" placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="age" class="control-label">Age :</label>
+                    <input type="text" name="age" value="{{data.Age}}" class="form-control" placeholder="Enter your age" required>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="salary" class="control-label">Salary :</label>
+                            <input type="number" name="salary" value="{{data.Salary}}" class="form-control" placeholder="Salary" required>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label for="position" class="control-label">Position :</label>
+                            <input type="text" name="position" value="{{data.Position}}" class="form-control" placeholder="Enter your position"  required>
+                        </div> 
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact" class="control-label">Contact :</label>
+                    <input type="number" name="contact" value="{{data.Contact}}" class="form-control" placeholder="Enter your contact"  required>
+                </div>  
+                
+                <div class="form-group">
+                    <label for="address" class="control-label">Address :</label>
+                    <input type="text" name="address" value="{{data.Address}}" class="form-control" placeholder="Enter your address"  required>
+                </div>
+
+                <div class="form-group pull-right">
+                    <button  type="submit" class="btn btn-primary">Update</button>
+                    <button  type="reset" class="btn btn-danger">Reset</button>
+                </div>
+        </form>
+    </div>
+</div>
+
+</body>
+
+<script>
+    $(document).ready(function(){
+        $(".alert").hide(2000);
+    });
+</script>
+
+</html>

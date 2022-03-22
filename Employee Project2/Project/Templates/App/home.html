@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% load static %}
+
+
+                <title>Home</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'bootstrap3/bootstrap.min.css' %}">
+    <link rel="stylesheet"   href="{% static 'Css/style.css' %}">
+    <link rel="stylesheet"   href="{% static 'font/css/all.min.css' %}">
+    <script src="{% static 'jquery/jquery.min.js' %}" ></script>
+
+</head>
+<body id="bg">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a herf="#" class="navbar-brand" id="navbar">Employee Details Management</a> 
+            </div>
+            <div class="nav navbar-header navbar-right ">
+                <ul class="nav navbar-nav " >
+
+                   <li><a href="{% url 'Contact' %}" class="navbar-brand" >Contact Us  </a></li>
+                   <li><p  class="navbar-brand" >|</p><l/i>
+                   <li><a href="{% url 'About' %}" class="navbar-brand" >About Us  </a></li>
+                   <li><p  class="navbar-brand" >|</p></li>
+                   <li><a  href="/admin" class="navbar-brand" >Admin Panel</a></li>
+                   <li><p  class="navbar-brand" >|</p></li>
+                   <li><a  href="/logout" class="navbar-brand" >Logout</a></li>
+                
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<br><br><br>
+    
+<div class="container-fluid ">
+    <div class="col-md-offset-4 col-md-4">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{message.tags}}">
+                    {% if message.tags == 'error' %}
+                        {{message}}
+
+                    {% else %}
+                        {{message}}
+                    {% endif %}
+
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+<div class="col-md-offset-2 col-md-10" style="margin-top: 150px;">
+    <div class="box1" id="card" style="background-color: black;">
+        <h3 class="text-center" style="color: aliceblue;">Register Employee Details</h3>
+        <a href="{% url 'Insert' %}" >
+            <button href="{% url 'Insert' %}" type="button" class="btn btn-info"><span style="color:black">Register Employee</span></button>
+        </a>
+    </div>
+
+    <div class="box2" id="card" style="background-color: black;">
+        <h3 class="text-center" style="color: aliceblue;">Update Employee Details</h3>
+        <a href="{% url 'Update' %}" >
+            <button href="{% url 'Update' %}" type="button" class="btn btn-warning"><span style="color:black">Update Employee</span></button>
+        </a>
+    </div>
+
+    <div class="box3" id="card" style="background-color: black;">
+        <h3 class="text-center" style="color: aliceblue;">Delete Employee Details</h3>
+        <a href="{% url 'Delete' %}" >
+            <button href="{% url 'Delete' %}" type="button" class="btn btn-danger"><span style="color:black">Delete Employee</span></button>
+        </a>
+    </div>
+
+    <div class="box4" id="card" style="background-color: black;">
+        <h3 class="text-center" style="color: aliceblue;"> View All Employee Details</h3>
+            <a href="{% url 'Details' %}" >
+                <button type="button" value="click here" class="btn btn-primary"><span style="color:black"> View All  Details</span></button>
+            </a>
+    </div>
+    
+</div>
+
+
+</body>
+<script>
+    $(document).ready(function(){
+        $(".alert").hide(2000);
+    });
+</script>
+</html>

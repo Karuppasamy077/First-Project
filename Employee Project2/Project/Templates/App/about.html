@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% load static %}
+
+                <title>About</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'bootstrap3/bootstrap.min.css' %}">
+    <link rel="stylesheet"   href="{% static 'Css/style.css' %}">
+    <script src="{% static 'jquery/jquery.min.js' %}" ></script>
+
+</head>
+<body style="background-color:gray" id="about">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a herf="#" class="navbar-brand" id="navbar">About us</a> 
+            </div>
+            <div class="nav navbar-header navbar-right ">
+                <ul class="nav navbar-nav navbar-right" >
+                   <li><a href="{% url 'Home' %}"  class="navbar-brand " id="pad">Back to home</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<br><br>
+
+<div class="col-md-offset-3 col-md-6 well " style="margin-top: 80px;" >
+    <h1 class="text-center">Welcome</h1><hr>
+    <pre><h4 style="font-family: 'Times New Roman', Times, serif;">           At Employee Details Management System , I belive everyone like to 
+    use  this website. using this website to maintain your Employee details. 
+    I am excited to help on your journey!...
+    </h4></pre>
+
+</div>
+
+</body>
+</html>

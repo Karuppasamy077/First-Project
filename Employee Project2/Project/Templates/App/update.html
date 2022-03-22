@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% load static %}
+
+                <title>Update</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'bootstrap3/bootstrap.min.css' %}">
+    <link rel="stylesheet"   href="{% static 'Css/style.css' %}">
+    <script src="{% static 'jquery/jquery.min.js' %}" ></script>
+
+</head>
+<body style="background-color: gray;" id="update">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a herf="#" class="navbar-brand" id="navbar">Update Employee Details </a> 
+            </div>
+            <div class="nav navbar-header navbar-right ">
+                <ul class="nav navbar-nav navbar-right" >
+                   <li><a href="{% url 'Insert' %}"  class="navbar-brand" id="pad">Register Details</a></li>
+                   <li><p  class="navbar-brand" >|</p><l/i>
+                   <li><a href="{% url 'Delete' %}" class="navbar-brand" id="pad">Delete Details</a></li>
+                   <li><p  class="navbar-brand" >|</p><l/i>
+                   <li><a href="{% url 'Details' %}" class="navbar-brand" id="pad">All Details</a></li>
+                   <li><p  class="navbar-brand" >|</p><l/i>
+                    <li><a href="{% url 'Home' %}" class="navbar-brand" id="pad">Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<br><br>
+
+<div class="container-fluid">
+    <div class="col-md-offset-4 col-md-4">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{message.tags}}">
+                    {% if message.tags == 'error' %}
+                        {{message}}
+
+                    {% else %}
+                        {{message}}
+                    {% endif %}
+
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+
+<div class="col-md-offset-2 col-md-8 well" style="margin-top: 60px;">
+    <div class="col-md-6 pull-right">
+        <td><input type="text" name="search" id="search" placeholder="Start typing to filter..." class="form-control"></td>
+    </div>
+</div>
+
+<div class="col-md-offset-2 col-md-8 well" >
+    <table class="table table-bordered">
+        <thead>
+            
+            <tr>
+                <th>S.No</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Salary</th>
+                <th>Position</th>
+                <th>Contact</th>
+                <th>Address</th>
+                <th>Update</th>
+            </tr>
+        </thead>
+        {% for d in data %}
+        <tbody id="table">
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{d.Empname}}</td>
+                <td>{{d.Age}}</td>
+                <td>{{d.Salary}}</td>
+                <td>{{d.Position}}</td>
+                <td>{{d.Contact}}</td>
+                <td>{{d.Address}}</td>
+                <td><a href="/update2/{{d.id}}">Update</a></td>
+
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+</div>
+
+
+</body>
+
+<script>
+    $(document).ready(function(){
+        $(".alert").hide(1000);
+    });
+</script>
+
+
+<script>
+    $("document").ready(function(){
+        $("#search").keyup(function(){
+            var value=$(this).val().toLowerCase()
+            $("#table tr").filter(function(){
+                $(this).toggle($(this).text().toLowerCase().indexOf(value)>-1);
+            });
+        });
+    });
+</script>
+
+</html>
